@@ -4,9 +4,7 @@ import TodoList from "../TodoList/TodoList";
 const Form = () => {
 
     const [inputText, setInputText] = useState("");
-    
-    
-   
+  
     const submitToHandler = (e) =>{
         e.preventDefault();
      
