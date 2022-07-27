@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import Todo from './Todo';
+import Form from '../Form/Form'
 
 describe("Button Checking", () => {
     it("Should hava a item", ()=>{
@@ -22,9 +23,14 @@ describe("Button Checking", () => {
 })
 
 describe("Testing the Functionality", () => {
+   
     it("Should add the given text", () => {
-        const {getByTestId} = render(<Todo />);
-        fireEvent.change(getByTestId("todo-item"), {target:{value:""}});
-        
+        const {getByTestId} = render(<Form />);
+        fireEvent.change(getByTestId("input-field"), {target:{value:"hi"}});
+        fireEvent.click(getByTestId("input-button"));
+        fireEvent.click(getByTestId("todo-complete"));
+        expect(getByTestId("todo-item")).toHaveTextContent("hi");
+
     })
+
 })

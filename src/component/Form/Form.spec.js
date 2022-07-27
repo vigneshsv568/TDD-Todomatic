@@ -47,12 +47,10 @@ describe("Basic render of Form", ()=>{
 
 describe("Testing the Functionality", () => {
     it("Should add the given text", () => {
-        const getForm = render(<Form />);
-        const getTodo = render(<Todo />);
-        
-        fireEvent.change(getForm.getByTestId("input-field"), {target:{value:"hi"}});
-        fireEvent.click(getForm.getByTestId("input-button"));
-        expect(getTodo.getAllByTestId("todo-item")[0]).toHaveTextContent("hi");
+        const {getByTestId} = render(<Form />);
+        fireEvent.change(getByTestId("input-field"), {target:{value:"hi"}});
+        fireEvent.click(getByTestId("input-button"));
+        expect(getByTestId("todo-item")).toHaveTextContent("hi");
 
     })
    
