@@ -24,13 +24,32 @@ describe("Button Checking", () => {
 
 describe("Testing the Functionality", () => {
    
-    it("Should add the given text", () => {
+    it("Adding a text and click the complete button", () => {
         const {getByTestId} = render(<Form />);
         fireEvent.change(getByTestId("input-field"), {target:{value:"hi"}});
         fireEvent.click(getByTestId("input-button"));
         fireEvent.click(getByTestId("todo-complete"));
-        expect(getByTestId("todo-item")).toHaveTextContent("hi");
+        expect(getByTestId("todo-item")).toHaveAttribute("class","todo todo-item completed");
 
     })
 
+    it("Adding a text and click the complete button & again complete button test", () => {
+        const {getByTestId} = render(<Form />);
+        fireEvent.change(getByTestId("input-field"), {target:{value:"hi"}});
+        fireEvent.click(getByTestId("input-button"));
+        fireEvent.click(getByTestId("todo-complete"));
+        fireEvent.click(getByTestId("todo-complete"));
+        expect(getByTestId("todo-item")).toHaveAttribute("class","todo todo-item ");
+        
+    })
+
+
+    it("Adding a text and click the Trash button", () => {
+        const form = render(<Form />);
+       // const todo = render(<Todo />);
+        fireEvent.change(form.getByTestId("input-field"), {target:{value:"hi"}});
+        fireEvent.click(form.getByTestId("input-button"));
+        fireEvent.click(form.getByTestId("todo-trash"));
+        expect(render(<Todo />).getByTestId("todo-count")).toHaveAttribute("class","0");
+    })
 })
