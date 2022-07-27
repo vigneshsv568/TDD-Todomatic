@@ -17,4 +17,14 @@ describe("Button Checking", () => {
         const{getByTestId} = render(<Todo />);
         expect(getByTestId("todo-trash")).toBeDefined();
     })
+
+    
+})
+
+describe("Testing the Functionality", () => {
+    it("Should add the given text", () => {
+        const {getByTestId} = render(<Todo />);
+        fireEvent.change(getByTestId("todo-item"), {target:{value:""}});
+        
+    })
 })

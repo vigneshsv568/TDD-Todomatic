@@ -1,7 +1,7 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, getByTestId, getByText, render } from '@testing-library/react';
 import Form from './Form';
-
+import Todo from '../Todo/Todo'
 
 
 describe("Basic render of Form", ()=>{
@@ -42,9 +42,19 @@ describe("Basic render of Form", ()=>{
     fireEvent.change(getByTestId("input-field"), {target:{value: "aa"}});
     expect(getByTestId("input-button")).not.toHaveAttribute("disabled");
 });
+})
 
 
-    
+describe("Testing the Functionality", () => {
+    it("Should add the given text", () => {
+        const getForm = render(<Form />);
+        const getTodo = render(<Todo />);
+        
+        fireEvent.change(getForm.getByTestId("input-field"), {target:{value:"hi"}});
+        fireEvent.click(getForm.getByTestId("input-button"));
+        expect(getTodo.getAllByTestId("todo-item")[0]).toHaveTextContent("hi");
 
+    })
+   
 
 })
