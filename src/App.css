@@ -65,12 +65,11 @@ form button {
 
 }
 
-form button:hover {
 
+form button:active:hover:not([disabled]) {
   background: #ff6f47;
 
   color: white;
-
 }
 
 .todo-container {
@@ -82,7 +81,14 @@ form button:hover {
   align-items: center;
 
 }
-
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: auto;
+  
+}
 
 
 
