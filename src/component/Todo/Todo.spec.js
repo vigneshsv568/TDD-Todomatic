@@ -50,6 +50,7 @@ describe("Testing the Functionality", () => {
         fireEvent.change(form.getByTestId("input-field"), {target:{value:"hi"}});
         fireEvent.click(form.getByTestId("input-button"));
         fireEvent.click(form.getByTestId("todo-trash"));
-        expect(render(<Todo />).getByTestId("todo-count")).toHaveAttribute("class","0");
+      //  expect(render(<Todo />).getByTestId("todo-count")).toHaveAttribute("class","0");
+        expect(form.queryByText("hi")).not.toBeInTheDocument();
     })
 })
